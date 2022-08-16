@@ -89,22 +89,21 @@
         },
         methods: {
             sum () {
-            // cook
-            const hourCook = +this.timeCook.slice(0, 2)
-            const minCook = +this.timeCook.slice(3)
-            const cookTime = luxon.DateTime.utc(1970, 1, 1, hourCook, minCook)
-            // wait
-            const hourToWait = +this.timeToWait.slice(0, 2)
-            const minToWait = +this.timeToWait.slice(3)
-            const waitTime = luxon.DateTime.utc(1970, 1, 1, hourToWait, minToWait)
-            // calc
-            const resultTime = luxon.DateTime.fromMillis(this.tt - cookTime - waitTime)
-            const duration = resultTime.diffNow(['hours', 'minutes'])
-            const time = luxon.DateTime.utc(1970, 1, 1, duration.values.hours, Math.floor(duration.values.minutes))
-            this.resultTimeStr = time.toLocaleString(luxon.DateTime.TIME_24_SIMPLE)
-            this.hoursMinutsNow
-            this.showTimerResult = true
-            // console.log(duration2)
+                // cook
+                const hourCook = +this.timeCook.slice(0, 2)
+                const minCook = +this.timeCook.slice(3)
+                const cookTime = luxon.DateTime.utc(1970, 1, 1, hourCook, minCook)
+                // wait
+                const hourToWait = +this.timeToWait.slice(0, 2)
+                const minToWait = +this.timeToWait.slice(3)
+                const waitTime = luxon.DateTime.utc(1970, 1, 1, hourToWait, minToWait)
+                // calc
+                const resultTime = luxon.DateTime.fromMillis(this.tt - cookTime - waitTime)
+                const duration = resultTime.diffNow(['hours', 'minutes'])
+                const time = luxon.DateTime.utc(1970, 1, 1, duration.values.hours, Math.floor(duration.values.minutes))
+                this.resultTimeStr = time.toLocaleString(luxon.DateTime.TIME_24_SIMPLE)
+                this.hoursMinutsNow
+                this.showTimerResult = true
             }
         }
     })
